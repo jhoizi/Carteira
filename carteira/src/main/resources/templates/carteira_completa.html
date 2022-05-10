@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Carteira</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-wrapper">
+      <a><span th:text="${carteira.nome}"></span></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a th:href="@{./{carteira}/nova(carteira=${carteira.codigo})}" class="waves-effect waves-light btn">Criar nova operação</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="tela_carteira_completa">
+    <div class="carteira_completa" th:each="operacao : ${operacoes}">
+      <div>
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card card_carteira_completa blue-grey darken-1">
+              <div class="card-content white-text">
+                <a id="titulo_carteira" th:href="@{./{carteira}/{codigo}(codigo=${operacao.codigo}, carteira=${carteira.codigo})}"><span class="card-title" th:text="${operacao.ativo}"></span></a>
+                <div>
+                  <p>Posição: <span th:text="${operacao.posicao}"></span></p>
+                  <p>Tipo: <span th:text="${operacao.tipo}"></span></p>
+                  <p>Preço de entrada : <span id="preco" th:text="${operacao.precoEntrada}"></span></p>
+                  <p>Quantidade : <span id="quantidade" th:text="${operacao.quantidade}"></span></p>
+                  <p>Data de entrada : <span th:text="${operacao.dataEntrada}"></span></p>
+                </div>
+              </div>
+              <div class="card-action">
+                <a th:href="@{./{carteira}/{codigo}(codigo=${operacao.codigo}, carteira=${carteira.codigo})}">Abrir</a>
+                <a th:href="@{./{carteira}/{codigo}/remover(codigo=${operacao.codigo}, carteira=${carteira.codigo})}">Remover</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    function calcular_investimento(){
+      var preco = parseFloat(document.getElementById('preco').innerHTML);
+      var quantidade = parseInt(document.getElementById('quantidade').innerHTML);
+      document.getElementById('investimento').innerHTML += preco*quantidade;
+    }
+ </script>
+  <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>

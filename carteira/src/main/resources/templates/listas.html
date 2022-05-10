@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listas</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Listas de Acompanhamento</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a th:href="@{./{identificador}/nova(identificador=${usuario.identificador})}" class="waves-effect waves-light btn">Nova Lista de Acompanhamento</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tela_lista">
+        <div class="lista" th:each="lista : ${listas}">
+            <div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_lista blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <a id="titulo_lista" th:href="@{./{identificador}/{codigo}(identificador=${usuario.identificador}, codigo=${lista.codigo})}"><span class="card-title" th:text="${lista.nome}"></span></a>
+                                <div th:each="ativo : ${ativos.get(lista.codigo)}">
+                                    <span th:text="${ativo.nome}"></span>
+                                    &nbsp;| Gat. : <span th:text="${ativo.gatilho}"></span>
+                                    &nbsp;| Qtd. : <span th:text="${ativo.quantidade}"></span>
+                                    &nbsp;| Pos. : <span th:text="${ativo.posicao}"></span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a th:href="@{./{identificador}/{codigo}(identificador=${usuario.identificador}, codigo=${lista.codigo})}">Abrir</a>
+                                <a th:href="@{./{identificador}/{codigo}/remover(identificador=${usuario.identificador}, codigo=${lista.codigo})}">Remover</a>
+                                <a hidden id="remover"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>

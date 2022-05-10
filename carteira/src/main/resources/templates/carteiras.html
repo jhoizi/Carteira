@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carteiras</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Carteiras</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a th:href="@{./{identificador}/nova(identificador=${usuario.identificador})}" class="waves-effect waves-light btn">Criar nova carteira</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tela">
+        <div class="carteira" th:each="carteira : ${carteiras}">
+            <div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <a id="titulo_carteira" th:href="@{./{identificador}/{codigo}(identificador=${usuario.identificador}, codigo=${carteira.codigo})}"><span class="card-title" th:text="${carteira.nome}"></span></a>
+                                <div th:each="operacao : ${operacoes.get(carteira.codigo)}">
+                                    <span th:text="${operacao.ativo}"></span>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <a th:href="@{./{identificador}/{codigo}(identificador=${usuario.identificador}, codigo=${carteira.codigo})}">Abrir</a>
+                                <a th:href="@{./{identificador}/{codigo}/remover(identificador=${usuario.identificador}, codigo=${carteira.codigo})}">Remover</a>
+                                <a hidden id="remover"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmacao">
+        <p>Tem certeza que deseja remover esta carteira?</p>
+        <div id="links">
+            <a onclick="remover()">Sim</a>
+            <a onclick="fechar()">Não</a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function confirmacao(){
+            document.getElementById("confirmacao").style.display = "block";
+        }
+
+        function fechar(){
+            document.getElementById("confirmacao").style.display = "none";
+        }
+
+        function remover(){
+            document.getElementById("remover").click();
+        }
+    </script>
+
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>

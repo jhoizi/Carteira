@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Operação</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Novo Ativo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+
+    <div class="formulario">
+        <form method="post">
+
+            <label>Ativo:</label>
+            <input type="text" name="nome">
+
+            <label>Preço Atual:</label>
+            <input type="number" name="preco" step="0.01">
+
+            <label>Quantidade:</label>
+            <input type="number" name="quantidade">
+
+            <label>Gatilho:</label>
+            <input type="number" name="gatilho" step="0.01">
+
+            <label>Posição:</label>
+            <div class="input-field">
+                <select name="posicao">
+                    <option value="compra">Compra</option>
+                    <option value="venda">Venda</option>
+                </select>
+            </div>
+
+            <label>Stop gain:</label>
+            <input type="number" name="ganho" step="0.01">
+
+            <label>Stop loss:</label>
+            <input type="number" name="perca" step="0.01">
+
+            <input class="waves-effect waves-light btn" type="submit">
+
+        </form>
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function(){
+              var sel = document.querySelectorAll('select');
+              M.FormSelect.init(sel);
+            });
+        </script>
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

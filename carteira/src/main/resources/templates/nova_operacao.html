@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Operação</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Nova Operação</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+    <div class="formulario">
+
+        <form method="post">
+            <label>Tipo:</label>
+            <div class="input-field">
+                <select name="tipo">
+                    <option value="daytrade">DayTrade</option>
+                    <option value="swingtrade">SwingTrade</option>
+                </select>
+            </div>
+
+            <label>Posição:</label>
+            <div class="input-field">
+                <select name="posicao">
+                    <option value="compra">Compra</option>
+                    <option value="venda">Venda</option>
+                </select>
+            </div>
+
+            <label>Status:</label>
+            <div class="input-field">
+                <select name="status" onselect="zerado()">
+                    <option value="aberta">Aberta</option>
+                    <option value="fechada">Fechada</option>
+                </select>
+            </div>
+
+            <label>Data de entrada:</label>
+            <input type="date" name="dataEntrada">
+
+            <label hidden id="datasaida">Data de saída: </label>
+            <input hidden id="dataz" type="date" name="dataZeragem">
+
+            <label>Ativo:</label>
+            <input type="text" name="ativo">
+
+            <label>Quantidade:</label>
+            <input type="number" name="quantidade">
+
+            <label>Preço de entrada:</label>
+            <input type="number" name="precoEntrada" step="0.01">
+
+            <label>Stop gain:</label>
+            <input type="number" name="ganho" step="0.01">
+
+            <label>Stop loss:</label>
+            <input type="number" name="perca" step="0.01">
+
+            <label hidden id="precosaida">Preço de saída:</label> <input hidden id="precoz" type="number" step="0.01" name="precoZeragem">
+
+            <input class="waves-effect waves-light btn" type="submit">
+
+
+        </form>
+    </div>
+    <script type="text/javascript">
+        zerado();
+
+        function zerado(){
+            document.getElementById("datasaida").removeAttribute("hidden");
+            document.getElementById("precosaida").removeAttribute("hidden");
+            document.getElementById("dataz").removeAttribute("hidden");
+            document.getElementById("precoz").removeAttribute("hidden");
+
+            document.getElementById("datasaida").removeAttribute("style");
+            document.getElementById("precosaida").removeAttribute("style");
+            document.getElementById("dataz").removeAttribute("style");
+            document.getElementById("precoz").removeAttribute("style");
+        }
+
+        function aberto(){
+            document.getElementById("datasaida").style.visibility="hidden";
+            document.getElementById("precosaida").style.visibility="hidden";
+            document.getElementById("dataz").style.visibility="hidden";
+            document.getElementById("precoz").style.visibility="hidden";
+        }
+
+    </script>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+          var sel = document.querySelectorAll('select');
+          M.FormSelect.init(sel);
+        });
+    </script>
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

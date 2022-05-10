@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carteira</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css", rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Carteira</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a th:href="@{/carteiras/{identificador}(identificador=${usuario.identificador})}" class="waves-effect waves-light btn">Carteiras</a></li>
+                <li><a th:href="@{/listas/{identificador}(identificador=${usuario.identificador})}" class="waves-effect waves-light btn">Listas de Acompanhamento</a></li>
+                <li><a href="/calculadora" class="waves-effect waves-light btn">Calculadora</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+}
+
+h3, h5{
+    text-align: center;
+}
+
+.tela_carteira_completa{
+    width: 90%;
+    margin-left: 7.5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card_carteira_completa{
+    width: 160%;
+}
+
+.tela_calculadora{
+    width: 90%;
+    margin-left: 7.5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card_calculadora{
+    width: 160%;
+}
+
+.tela{
+    width: 80%;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+}
+
+.carteira{
+    width: 135%;
+}
+
+.tela_lista{
+    width: 90%;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.lista{
+    width: 70%;
+    margin: 2%;
+    position: relative;
+}
+
+.card_lista{
+    width: 200%;
+}
+#titulo_lista{
+    text-align: center;
+}
+
+#titulo_carteira{
+    text-align: center;
+}
+#confirmacao{
+    display: none;
+    width: 20%;
+    position: absotule;
+    margin-left: 40%;
+    font-size: 20pt;
+    background-color: gray;
+}
+a{
+    cursor: pointer;
+}
+
+.formulario{
+    width: 60%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+label{
+    font-size: 18pt;
+}
+
+nav a{
+    font-size: 34pt;
+}

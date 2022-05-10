@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculadora</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+
+        <nav>
+            <div class="nav-wrapper">
+                <a>Calculadora</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                </ul>
+            </div>
+        </nav>
+
+        <div class="tela_calculadora">
+
+            <div class="calculadora">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_calculadora blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Quantidade Lotes</span>
+                                <p>Calcular a quantidade de lotes que se pode operar de um ativo de acordo com seu preço</p>
+                                <p>Capital: <input type="number" id="capital"></p>
+                                <p>Preço do ativo: <input type="number" id="preco"></p>
+                                <p id="resultado_quantidade"></p>
+                            </div>
+                            <div class="card-action">
+                                <button onclick="quantidade_lotes()">Calcular</button>
+                                <button onclick="limpar_quantidade()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculadora">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_calculadora blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Variação</span>
+                                <p>Calcular a variação de um ativo</p>
+                                <p>Preço incial: <input type="number" id="preco_inicial"></p>
+                                <p>Preço final: <input type="number" id="preco_final"></p>
+                                <p id="resultado_variacao"></p>
+                            </div>
+                            <div class="card-action">
+                                <button onclick="variacao()">Calcular</button>
+                                <button onclick="limpar_variacao()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculadora">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_calculadora blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Preço Variação</span>
+                                <p>Calcular o preço de um ativo a partir de sua variação</p>
+                                <p>Preço do ativo: <input type="number" id="preco_ativo"></p>
+                                <p>Variação do ativo: <input type="number" id="variacao_ativo"></p>
+                                <p id="resultado_preco"></p>
+                            </div>
+                            <div class="card-action">
+                                <button onclick="preco_variacao()">Calcular</button>
+                                <button onclick="limpar_preco()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculadora">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_calculadora blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Médio</span>
+                                <p>Calcular o médio de uma operação</p>
+                                <p>Preço atual : <input type="number" id="preco_atual"></p>
+                                <p>Quantidade atual : <input type="number" id="quantidade_atual"></p>
+                                <p>Preço nova operação: <input type="number" id="preco_operacao"></p>
+                                <p>Quantidade nova operação: <input type="number" id="quantidade_operacao"></p>
+                                <p id="resultado_medio"></p>
+                            </div>
+                            <div class="card-action">
+                                <button onclick="medio()">Calcular</button>
+                                <button onclick="limpar_medio()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculadora">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_calculadora blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Simular Operação</span>
+                                <p>Simular os resultados de uma operação</p>
+                                <p>Capital: <input type="number" id="capital_investido"></p>
+                                <p>Preço de entrada: <input type="number" id="preco_entrada"></p>
+                                <p>Stop Gain: <input type="number" id="stop_gain"></p>
+                                <p>Stop Loss: <input type="number" id="stop_loss"></p>
+                                <p id="ganho"></p>
+                                <p id="perca"></p>
+                            </div>
+                            <div class="card-action">
+                                <button onclick="simular()">Calcular</button>
+                                <button onclick="limpar_simular()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculadora">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card card_calculadora blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">Preço médio novo</span>
+                                <p>Calcular a quantidade de novos lotes a aportar para se ter determinado preço médio</p>
+                                <p>Preço atual: <input type="number" id="preco1"></p>
+                                <p>Quantidade atual: <input type="number" id="quantidade1"></p>
+                                <p>Preço de novo aporte: <input type="number" id="preco2"></p>
+                                <p>Preço médio desejado: <input type="number" id="preco_medio"></p>
+                                <p id="quantidade_aporte"></p>
+                                <p id="investimento"></p>
+                            </div>
+                            <div class="card-action">
+                                <button onclick="quantidade_medio()">Calcular</button>
+                                <button onclick="limpar_quantidade_medio()">Limpar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/calculadora/operacoes.js"></script>
+        <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    </body>
+</html>

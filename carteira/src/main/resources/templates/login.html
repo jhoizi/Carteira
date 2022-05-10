@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Login</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+
+    <div class="formulario">
+        <p><span th:text="${erro}"></span><p>
+        <form method="post">
+            <label>Identificação:</label> <input type="text" name="identificador" placeholder="Identificador de 5 dígitos: (00000)">
+            <label>Senha:</label><input type="password" name="senha">
+            <input class="waves-effect waves-light btn" type="submit">
+        </form>
+        <div>
+            <a href="#">Esqueci minha senha</a>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+</body>
+</html>

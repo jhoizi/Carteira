@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Lista</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a>Nova Lista</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+
+    <div class="formulario">
+
+        <form method="post" action="./novalista">
+            <label>Nome:</label>
+            <input type="text" name="nome">
+
+            <label>Visibilidade:</label>
+
+            <div class="input-field">
+                <select name="visibilidade">
+                    <option value=0>Pública</option>
+                    <option value=1>Privada</option>
+                </select>
+            </div>
+
+            <input type="submit" class="waves-effect waves-light btn">
+        </form>
+    </div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+          var sel = document.querySelectorAll('select');
+          M.FormSelect.init(sel);
+        });
+    </script>
+    <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
